@@ -1,0 +1,41 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: extended-spec-config
+  namespace: kube-system
+  labels:
+    f5type: virtual-server
+    as3: "true"
+data:
+  extendedSpec: |
+    mode: ratio
+    externalClustersConfig:
+    - clusterName: cluster1
+      secret: default/kubeconfig1
+    - clusterName: cluster2
+      secret: default/kubeconfig2
+    - clusterName: cluster3
+      secret: default/kubeconfig3  
+    baseRouteSpec:
+     autoMonitor: service-endpoint
+     autoMonitorTimeout: 30
+     tlsCipher:
+          tlsVersion: 1.2
+          ciphers: DEFAULT
+          cipherGroup: /Common/f5-default 
+     defaultTLS:
+       clientSSL: /Common/clientssl
+       serverSSL: /Common/serverssl
+       reference: bigip
+    extendedRouteSpec:
+    - namespace: hello-world
+      vserverAddr: 10.0.1.101
+      vserverName: hello-world-routes
+      allowOverride: false
+      bigIpPartition: hello-world
+      policyCR: kube-system/security-policy
+#    - namespace: nginx-ingress
+#      vserverAddr: 10.0.1.100
+#      vserverName: default-namespace-routes
+#      bigIpPartition: default
+#      allowOverride: true

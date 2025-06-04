@@ -1,0 +1,22 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    #virtual-server.f5.com/clientssl: /Common/foo-clientssl
+    #virtual-server.f5.com/serverssl: /Common/foo-serverssl
+  labels:
+    f5type: systest
+  name: hello-world-route
+  namespace: hello-world
+spec:
+  host: hello-world.example.com
+  path: /
+  tls:
+    termination: reencrypt
+    insecureEdgeTerminationPolicy: Redirect
+  to:
+    kind: Service
+    name: hello-world
+    weight: 100
+  port:
+    targetPort: 8443
