@@ -48,11 +48,11 @@ This example uses CIS 2.20.0, and the rbac and CRD definitions linked to in 2.20
 
 ## Test results
 #### BIG-IP is configured
-![CIS has created a Virtual Server on BIG-IP](cis-standalone/2-tier-crd-with-haproxy/images/virtual_servers.png)
+![CIS has created a Virtual Server on BIG-IP](images/virtual_servers.png)
 
-![Pool members correspond to HAProxy pods](cis-standalone/2-tier-crd-with-haproxy/images/pool_members.png)
+![Pool members correspond to HAProxy pods](images/pool_members.png)
 #### App is accessible
-![Demo app](cis-standalone/2-tier-crd-with-haproxy/images/success_app_exposed.png)
+![Demo app](images/success_app_exposed.png)
 
-![Headers show IP address of app pod, as well as HAProxy pod](cis-standalone/2-tier-crd-with-haproxy/images/success_app_headers.png)
+![Headers show IP address of app pod, as well as HAProxy pod](images/success_app_headers.png)
  
