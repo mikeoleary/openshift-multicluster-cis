@@ -47,6 +47,7 @@ spec:
             "--insecure",
             "--namespace=openshift-ingress",
             "--namespace=hello-world", 
+            "--namespace=kube-system", 
             "--manage-routes=false",
             "--custom-resource-mode=true",
             "--log-level=DEBUG",
