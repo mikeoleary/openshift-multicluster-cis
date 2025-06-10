@@ -29,8 +29,13 @@ spec:
   pools:
     - path: /
       monitors:
-        - name: /Common/https
-          reference: bigip
+        #- name: /Common/https
+        #  reference: bigip
+        - type: https
+          send: "GET / HTTP/1.1\r\nHost: hello-world.example.com\r\nConnection: close\r\n\r\n"
+          recv: ""
+          interval: 10
+          timeout: 30
       multiClusterServices:
         # CIS supports to refer svs from local cluster and ha cluster
         - clusterName: cluster1
